@@ -59,11 +59,18 @@ if s is None:
     sys.exit(1)
 
 
-print("sending hello world")
-framedSend(s, b"hello world", debug)
-print("received:", framedReceive(s, debug))
+print("sending a file ")
 
-print("sending hello world")
-framedSend(s, b"hello world", debug)
-print("received:", framedReceive(s, debug))
+with open ("filetoSend.txt",'rb') as f:
+    l = f.read(100).splitlines()
+    for item in l:
+        framedSend(s, item, debug)
+       
+        print("received:", framedReceive(s, debug))
+       
+        
+    
+   
+
+
 
