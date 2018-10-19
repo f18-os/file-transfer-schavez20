@@ -62,11 +62,14 @@ if s is None:
 print("sending a file ")
 
 with open ("filetoSend.txt",'rb') as f:
-    l = f.read(100).splitlines()
+    l = f.read().splitlines()
     for item in l:
         framedSend(s, item, debug)
        
         print("received:", framedReceive(s, debug))
+    
+f.close()
+
        
         
     
